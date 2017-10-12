@@ -13,8 +13,10 @@ object Solver {
     val size = C.rows
     if( C.rows != C.cols ) {
       // throw exception or something
+      print("C Not factorizable!")
     }
     if( b.length != size ) {
+      print("b Not factorizable!")
       // throw exception or something
     }
     // first we solve C * y = b
