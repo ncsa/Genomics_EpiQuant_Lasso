@@ -101,7 +101,7 @@ object Parser {
   }
 
 
-  def parse(spark: SparkSession, args: Array[String]) = {
+  def parse(spark: SparkSession, args: Array[String]): (RDD[(BDM[Double], BDM[Double], Int)], Array[String], Array[String], Array[String]) = {
     val snp_f = args(0)
     val phe_f = args(1)
 

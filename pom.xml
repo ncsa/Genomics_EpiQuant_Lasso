@@ -5,7 +5,7 @@
   <version>1.0-SNAPSHOT</version>
   <inceptionYear>2008</inceptionYear>
   <properties>
-    <scala.version>2.1.0</scala.version>
+    <scala.version>2.11.0</scala.version>
     <scala.binary.version>2.11</scala.binary.version>
   </properties>
 
@@ -30,6 +30,7 @@
     <dependency>
       <groupId>org.scala-tools</groupId>
       <artifactId>maven-scala-plugin</artifactId>
+      <version>2.15.2</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
@@ -85,6 +86,7 @@
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
+        <version>2.15.2</version>
         <executions>
           <execution>
             <goals>
@@ -124,6 +126,7 @@
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
+        <version>2.15.2</version>
         <configuration>
           <scalaVersion>${scala.binary.version}</scalaVersion>
         </configuration>
