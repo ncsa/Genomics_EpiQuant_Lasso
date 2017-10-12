@@ -16,21 +16,34 @@ object DataWriter {
     val snp_arr: Array[Array[String]] = snp_src.getLines().map(_.split("\t")).toArray
     val phe_iter: Iterator[Array[String]] = phe_src.getLines().map(_.split("\t"))
 
-
+//  keep the headers
     val sample_names = snp_arr(0).drop(5)
     val snp_names = snp_arr.drop(1).map(x => x(0))
-    val phe_names = phe_iter.next()
+    val phe_names = phe_iter.next().drop(1)
     //val phe_names = phe_iter(0).drop(1)
 
-    val snp_arr_t: Array[Array[String]] = snp_arr.drop(1).map(x => x.drop(5)).transpose
-
+// transposed double array
+    val snp_arr_t = snp_arr.drop(1).map(x => x.drop(5).map(_.toDouble)).transpose
     var i = 0
-    var phe_length = 0
+    val phe_cols = phe_names.length
+
+    val snp_cols = snp_names.length
+    val dim_X = snp_cols * (snp_cols+1) / 2
+
     for (line <- snp_arr_t) {
       val phe_line: Array[String] = phe_iter.next().drop(1)
-      phe_length = phe_line.length
       dest.write(phe_line.mkString("\t") + "\t")
-      dest.println(line.mkString("\t"))
+      dest.print(line.mkString("\t") + "\t" )
+      for (k <- 0 until snp_cols - 1) {
+        for (j <- k + 1 until snp_cols) {
+          if (k==snp_cols-2 && j == snp_cols-1) {
+            //print (k)
+            dest.println((line(k) * line(j)).toString())
+          } else {
+            dest.write((line(k) * line(j)).toString() + '\t')
+          }
+        }
+      }
       i = i + 1
     }
 
@@ -38,7 +51,7 @@ object DataWriter {
     phe_src.close()
     dest.close()
 
-    phe_length
+    phe_cols
   }
 
 }

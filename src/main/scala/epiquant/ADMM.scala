@@ -138,12 +138,14 @@ import scala.util.control._
       val q = Atb + v // q = (A^T b + rho z - y)
       val Aq = x*q
       val p = Solver.solve(L, Aq)      // p = (U \ (L \ (A*q))
+      println(p.length)
       val ret = DenseVector.zeros[Double](x.cols)
+      print(x.t.rows)
       QuadraticMinimizer.gemv(1, x.t, p, 0, ret)  /* now ret = A^T * (U \ (L \ (A*q)) */
       q/rho - 1/square(rho) * ret   /* x = q/rho - 1/rho^2 * A^T * (U \ (L \ (A*q))) */
     }
 
-    protected def Atb: DenseVector[Double] = datx.zip(daty).map {
+    protected val Atb: DenseVector[Double] = datx.zip(daty).map {
       x => {
         x._1.t * x._2
       }

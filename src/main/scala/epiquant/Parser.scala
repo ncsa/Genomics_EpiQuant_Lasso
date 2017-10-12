@@ -34,7 +34,7 @@ object Parser {
   }
 
   def read_data(txt: Iterator[String], phe_length: Int): (DenseVector[Double], DenseMatrix[Double]) = {
-    val parsed = txt.map(x => x.split(' ').map(_.toDouble)).toArray
+    val parsed = txt.map(x => x.split('\t').map(_.toDouble)).toArray
 
     //TODO: making it a loop
     //for (i <- 0 until phe_length) {
