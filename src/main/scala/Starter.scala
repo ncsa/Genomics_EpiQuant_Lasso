@@ -1,6 +1,7 @@
 object Starter {
   def main(args: Array[String]): Unit = {
-    if (args.length != 2 || args.length != 3) {
+    args.foreach(println)
+    if (args.length != 2 && args.length != 3) {
       print("Not Enough Arguments! ")
       return
     }
