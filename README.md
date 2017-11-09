@@ -28,6 +28,7 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 ## Running the tests
 
 * The resources folder contain some small, already formatted datafiles to run and test the prototype. 
+	
 	*`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/test/file] [number of phenotypes]`
 
 * Currently only supports analyzing 1 phenotype at a time
