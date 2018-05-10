@@ -34,9 +34,16 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 * Currently only supports analyzing 1 phenotype at a time
 
 ### Validation results
-* `spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/Genotyp] [maxiter] [abstol] [reltol] [lambda]`
+```bash
+# run with epiquant
+cd Genomics_EpiQuant_Lasso/
+mvn -Dmaven.test.skip=true install
+spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar resources/Genotypes/randomMatrix.tsv resources/Phenotypes/randomY.tsv 100 1e-05 1e-05 0.128
+
+```
 
 ```R
+# run with R-glmnet
 library(glmnet)
 set.seed(1)
 n=100
