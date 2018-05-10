@@ -29,7 +29,7 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 
 * The resources folder contain some small, already formatted datafiles to run and test the prototype. 
 	
-	*`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/test/file] [number of phenotypes]`
+	*`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar resources/Genotypes/randomMatrix.tsv resources/Phenotypes/randomY.tsv [maxiter] [abstol] [reltol] [lambda]`
 
 * Currently only supports analyzing 1 phenotype at a time
 
