@@ -34,27 +34,26 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 * Currently only supports analyzing 1 phenotype at a time
 
 ### Validation results
-	*`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar resources/Genotypes/randomMatrix.tsv resources/Phenotypes/randomY.tsv 100 1e-05 1e-05 0.5`
+* `spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/Genotyp] [maxiter] [abstol] [reltol] [lambda]`
 
-	```R
-	library(glmnet)
-	set.seed(1)
-	n=100
-	p=20
-	m=5
-	y = matrix(c(runif(m), rep(0, p-m)))
-	A = matrix(rnorm(n*p, mean=1.2, sd=2), n, p)
-	b = 5 + A %*% y + rnorm(n)
+```R
+library(glmnet)
+set.seed(1)
+n=100
+p=20
+m=5
+y = matrix(c(runif(m), rep(0, p-m)))
+A = matrix(rnorm(n*p, mean=1.2, sd=2), n, p)
+b = 5 + A %*% y + rnorm(n)
+fit = glmnet(A, b, intercept= FALSE, lambda = 0.128)
+out_glmnet = coef(fit, s=0.128, exact=TRUE)
 
-	fit = glmnet(A, b, intercept= FALSE, lambda = 0.128)
-	out_glmnet = coef(fit, s=0.128, exact=TRUE)
+out_epiquant = #results from epiquant
 
-	out_epiquant = #results from epiquant
+data.frame(epiquant=as.numeric(res), glmnet = as.numeric(out_glmnet[-1]))	
+```
 
-	data.frame(epiquant=as.numeric(res), glmnet = as.numeric(out_glmnet[-1]))	
-	```
-
-	```
+```
 	  epiquant     glmnet
 1   0.640177418 0.63032933
 2   0.263225825 0.26043376
@@ -76,7 +75,7 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 18  0.259960659 0.26040785
 19  0.252801284 0.24396617
 20  0.277613182 0.25075847
-	```
+```
 
 ## Acknowledgments
 
