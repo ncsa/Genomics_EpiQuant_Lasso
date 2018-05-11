@@ -65,7 +65,8 @@ data.frame(epiquant=as.numeric(res), glmnet = as.numeric(out_glmnet[-1]))
 ```
 
 ```
-	  epiquant     glmnet
+# output coefficients
+      epiquant    glmnet
 1   0.640177418 0.63032933
 2   0.263225825 0.26043376
 3   0.809289780 0.81464664
