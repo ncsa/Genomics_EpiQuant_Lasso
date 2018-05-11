@@ -29,11 +29,11 @@ This is a preprocessing step in the EpiQuant data analytic pipeline. The LASSO l
 
 * The resources folder contain some small, already formatted datafiles to run and test the prototype. 
 	
-	*`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/Genotype/file] [path/to/Phenotype/file] [maxiter] [abstol] [reltol] [lambda]`
-	** maxiter: maximum number of iterations
-	** abstol: absolute tolerance stopping criterion
-	** reltol: relative tolerance stopping criterion
-	** lambda: a regularization parameter
+	`spark-submit --master local --class epiquant.Main target/lasso-spark-1.0-SNAPSHOT.jar [path/to/Genotype/file] [path/to/Phenotype/file] [maxiter] [abstol] [reltol] [lambda]`
+	* maxiter: maximum number of iterations
+	* abstol: absolute tolerance stopping criterion
+	* reltol: relative tolerance stopping criterion
+	* lambda: a regularization parameter
 
 * Currently only supports analyzing 1 phenotype at a time
 
